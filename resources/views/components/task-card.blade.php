@@ -1,6 +1,7 @@
 <div class="flex items-center justify-between p-6 mb-4 bg-white rounded">
     <div>
-        <h3 class="text-lg font-semibold">{{ $task->title }}</h3>
+        <h3 class="{{ $task->completed ? 'opacity-70 line-through' : '' }} text-lg font-semibold">{{ $task->title }}
+        </h3>
         <p class="text-sm text-gray-500">Status:
             <span
                 class="{{ $task->completed ? 'text-green-600' : 'text-red-600' }}">{{ $task->completed ? 'Concluido' : 'Pendente' }}</span>
