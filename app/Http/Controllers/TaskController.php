@@ -10,7 +10,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::All();
+        $tasks = Task::all();
         return view('tasks.index', compact('tasks'));
     }
 
@@ -35,15 +35,15 @@ class TaskController extends Controller
     }
 
     public function toggle(Task $task)
-{
-    $task->update([
-        'completed' => ! $task->completed
-    ]);
+    {
+        $task->update([
+            'completed' => ! $task->completed
+        ]);
 
-    return redirect()
-        ->route('tasks.index')
-        ->with('success', 'Status da tarefa atualizado!');
-}
+        return redirect()
+            ->route('tasks.index')
+            ->with('success', 'Status da tarefa atualizado!');
+    }
 
     public function destroy(Task $task)
     {

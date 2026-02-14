@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TaskController;
@@ -7,7 +8,7 @@ use App\Http\Controllers\TaskController;
 // Route::get('/', function () {
 //     return view('home');
 // });
-Route::get('/', [TaskController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 Route::resource('users', UserController::class);
 Route::resource('tasks', TaskController::class);
