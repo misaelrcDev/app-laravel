@@ -3,13 +3,14 @@
 @section('title', 'Bem-vindo!')
 
 @section('content')
-    <h1 class="text-xl font-bold">Seja Bem-vindo!</h1>
+    <h2 class="mb-6 text-xl font-bold">Seja Bem vindo Misael</h2>
 
-    <div>
-        @forelse ($tasks as $task)
-            <x-task-card :task="$task" />
-        @empty
-            <x-empty-state />
-        @endforelse
-    </div>
+
+
+    @forelse ($tasks as $task)
+        <x-task-card :task="$task" />
+    @empty
+        <x-empty-state />
+    @endforelse
+
 @endsection

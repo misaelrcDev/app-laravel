@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\TaskStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Task;
 use Illuminate\Http\Request;
@@ -18,12 +19,10 @@ class TaskController extends Controller
     {
         $request->validate([
             'title' => 'required|min:3',
-            'completed' => 'boolean',
         ]);
 
         Task::create([
             'title' => $request->title,
-            'completed' => $request->boolean('completed'),
         ]);
 
         return redirect()->route('tasks.index')->with('success', 'Tarefa criada com sucesso!');
@@ -37,12 +36,12 @@ class TaskController extends Controller
     public function toggle(Task $task)
     {
         $task->update([
-            'completed' => ! $task->completed
+            'status' => $task->status === TaskStatus::Pending
+                ? TaskStatus::Completed
+                : TaskStatus::Pending
         ]);
 
-        return redirect()
-            ->route('tasks.index')
-            ->with('success', 'Status da tarefa atualizado!');
+        return back()->with('success', 'Status atualizado!');
     }
 
     public function destroy(Task $task)

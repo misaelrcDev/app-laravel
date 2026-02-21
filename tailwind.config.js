@@ -8,6 +8,12 @@ export default {
         './resources/**/*.blade.php',
         './resources/**/*.js',
         './resources/**/*.vue',
+        './app/Enums/*.php'
+    ],
+    safelist: [
+        'bg-yellow-500',
+        'bg-green-600',
+        'text-white',
     ],
     theme: {
         extend: {

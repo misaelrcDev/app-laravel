@@ -8,7 +8,7 @@ use App\Http\Controllers\TaskController;
 // Route::get('/', function () {
 //     return view('home');
 // });
-Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::resource('users', UserController::class);
 Route::resource('tasks', TaskController::class);
