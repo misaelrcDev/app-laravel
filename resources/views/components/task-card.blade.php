@@ -23,7 +23,7 @@
             @csrf
             @method('PATCH')
 
-            <button class="px-3 py-1 rounded text-sm
+            <button class="px-3 py-1 rounded text-white
         {{ $task->status->buttonStyle() }}">
                 {{ $task->status->buttonText() }}
             </button>

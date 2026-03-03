@@ -9,8 +9,14 @@ class Task extends Model
 {
     protected $fillable = [
         'title',
-        'status'
+        'status',
+        'user_id'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     protected $casts = [
         'status' => TaskStatus::class,

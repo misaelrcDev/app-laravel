@@ -43,8 +43,8 @@ enum TaskStatus: string
     public function buttonStyle(): string
     {
         return match($this) {
-            self::Completed => 'bg-yellow-500 text-white',
-            self::Pending => 'bg-green-600 text-white',
+            self::Completed => 'bg-yellow-500  hover:bg-yellow-600',
+            self::Pending => 'bg-green-600  hover:bg-green-700',
         };
     }
 

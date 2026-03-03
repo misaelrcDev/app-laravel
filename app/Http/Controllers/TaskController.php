@@ -6,12 +6,16 @@ use App\Enums\TaskStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = Auth::user()
+            ->tasks()
+            ->latest()
+            ->get();
         return view('tasks.index', compact('tasks'));
     }
 
@@ -23,6 +27,7 @@ class TaskController extends Controller
 
         Task::create([
             'title' => $request->title,
+            'user_id' => auth()->id(),
         ]);
 
         return redirect()->route('tasks.index')->with('success', 'Tarefa criada com sucesso!');
